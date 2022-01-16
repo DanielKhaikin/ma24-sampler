@@ -33,7 +33,8 @@ public class CsvReader implements Reader{
             String line;
             while ((line = br.readLine()) != null){
                 String[] record = line.split(DELIMITER);
-
+                MadaReport madaReport = recordToMadaReport(record);
+                madaReports.add(madaReport);
             }
         } catch (IOException e) {
             e.printStackTrace();
