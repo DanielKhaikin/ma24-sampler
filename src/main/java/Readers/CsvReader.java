@@ -5,6 +5,7 @@ import Parsers.MadaReport;
 import java.io.*;
 import java.nio.file.Files;
 import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.*;
 
 public class CsvReader implements Reader{
@@ -29,7 +30,7 @@ public class CsvReader implements Reader{
     public Set readData() {
         HashSet<MadaReport> madaReports = new HashSet<>();
         try {
-            BufferedReader br = Files.newBufferedReader(Path.of(this.file.getPath()));
+            BufferedReader br = Files.newBufferedReader(Path.of(this.file.getAbsolutePath()));
             String line;
             while ((line = br.readLine()) != null){
                 String[] record = line.split(DELIMITER);
@@ -46,17 +47,16 @@ public class CsvReader implements Reader{
         String MDACODE = record[0];
         String IDNum = record[1];
         String IDType = record[2];
-        String supplierCode = record[3];
-        String firstName = record[4];
-        String lastName = record[5];
-        String city = record[6];
-        String street = record[7];
-        String buildingNumber = record[8];
-        String barcode = record[9];
-        String getDate = record[10];
-        String takeDate = record[11];
-        String resultDate = record[12];
-        return new MadaReport(MDACODE,IDNum,IDType,supplierCode,firstName,lastName,city,street,buildingNumber,barcode,getDate,takeDate,resultDate);
+        String firstName = record[3];
+        String lastName = record[4];
+        String city = record[5];
+        String street = record[6];
+        String buildingNumber = record[7];
+        String barcode = record[8];
+        String getDate = record[9];
+        String takeDate = record[10];
+        String resultDate = record[11];
+        return new MadaReport(MDACODE,IDNum,IDType,firstName,lastName,city,street,buildingNumber,barcode,getDate,takeDate,resultDate);
     }
 
 

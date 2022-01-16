@@ -4,7 +4,6 @@ public class MadaReport {
     private String MDACODE;
     private String IDNum;
     private String IDType;
-    private String SupplierCode;
     private String FirstName;
     private String LastName;
     private String City;
@@ -15,11 +14,10 @@ public class MadaReport {
     private String TakeDate;
     private String ResultDate;
 
-    public MadaReport(String MDACODE, String IDNum, String IDType, String supplierCode, String firstName, String lastName, String city, String street, String buildingNumber, String barcode, String getDate, String takeDate, String resultDate) {
+    public MadaReport(String MDACODE, String IDNum, String IDType, String firstName, String lastName, String city, String street, String buildingNumber, String barcode, String getDate, String takeDate, String resultDate) {
         this.MDACODE = MDACODE;
         this.IDNum = IDNum;
         this.IDType = IDType;
-        SupplierCode = supplierCode;
         FirstName = firstName;
         LastName = lastName;
         City = city;
@@ -53,14 +51,6 @@ public class MadaReport {
 
     public void setIDType(String IDType) {
         this.IDType = IDType;
-    }
-
-    public String getSupplierCode() {
-        return SupplierCode;
-    }
-
-    public void setSupplierCode(String supplierCode) {
-        SupplierCode = supplierCode;
     }
 
     public String getFirstName() {
