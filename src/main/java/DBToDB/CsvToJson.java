@@ -1,6 +1,12 @@
 package DBToDB;
 
+import Parsers.MadaReport;
+import Readers.CsvReader;
+import Writers.JsonWriter;
+
 import java.io.File;
+import java.util.HashSet;
+import java.util.LinkedList;
 
 public class CsvToJson implements DBToDB{
     private File csvFile;
@@ -29,6 +35,22 @@ public class CsvToJson implements DBToDB{
 
     @Override
     public void execute() {
-        
+        CsvReader csvReader = new CsvReader(csvFile);
+        JsonWriter jsonWriter = new JsonWriter(jsonFile);
+        LinkedList<MadaReport> list = new LinkedList<>();
+        int count = 0;
+        int numFiles = 1;
+        HashSet<MadaReport> madaReports = (HashSet<MadaReport>) csvReader.readData();
+        for (MadaReport madaReport: madaReports) {
+            list.add(madaReport);
+            count++;
+            if ((count == 50000) || count == madaReports.size()){
+                jsonWriter.writeData(list);
+                numFiles++;
+                File newFile = new File("C:\\Users\\Daniel\\HadogemHamatmidJson\\file%d.json", String.valueOf((numFiles)));
+                jsonWriter.setFile(newFile);
+                list.clear();
+            }
+        }
     }
 }
