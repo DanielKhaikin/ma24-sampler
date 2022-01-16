@@ -1,2 +1,2 @@
-package Readers;public class Reader {
+package Readers;public interface Reader {
 }
