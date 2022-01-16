@@ -1,2 +1,3 @@
-package PACKAGE_NAME;public interface DBToDB {
+public interface DBToDB {
+    public void execute();
 }
