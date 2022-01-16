@@ -41,7 +41,22 @@ public class CsvReader implements Reader{
         return madaReports;
     }
 
-    publ
+    public MadaReport recordToMadaReport(String[] record){
+        String MDACODE = record[0];
+        String IDNum = record[1];
+        String IDType = record[2];
+        String supplierCode = record[3];
+        String firstName = record[4];
+        String lastName = record[5];
+        String city = record[6];
+        String street = record[7];
+        String buildingNumber = record[8];
+        String barcode = record[9];
+        String getDate = record[10];
+        String takeDate = record[11];
+        String resultDate = record[12];
+        return new MadaReport(MDACODE,IDNum,IDType,supplierCode,firstName,lastName,city,street,buildingNumber,barcode,getDate,takeDate,resultDate);
+    }
 
 
 }
