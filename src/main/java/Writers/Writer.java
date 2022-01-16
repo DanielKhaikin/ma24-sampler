@@ -1,2 +1,4 @@
-package Writers;public interface Writer {
+package Writers;
+
+public interface Writer {
 }
