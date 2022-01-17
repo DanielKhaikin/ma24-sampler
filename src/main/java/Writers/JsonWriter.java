@@ -21,11 +21,12 @@ public class JsonWriter implements Writer{
         this.file = file;
     }
 
+
     @Override
-    public void writeData(LinkedList list) {
+    public void writeData(Object o) {
         ObjectMapper objectMapper = new ObjectMapper();
         try {
-            objectMapper.writeValue(file, list);
+            objectMapper.writeValue(file, o);
         } catch (IOException e) {
             e.printStackTrace();
         }

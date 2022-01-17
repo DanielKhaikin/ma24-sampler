@@ -19,7 +19,7 @@ public class XmlWriter implements Writer{
     }
 
     @Override
-    public void writeData(LinkedList list) {
+    public void writeData(Object o) {
 
     }
 }
