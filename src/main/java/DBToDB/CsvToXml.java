@@ -1,8 +1,11 @@
 package DBToDB;
 
+import Parsers.LabTest;
 import Parsers.MadaReport;
 import Readers.CsvReader;
+import Readers.CsvReaderB;
 import Writers.JsonWriter;
+import Writers.XmlWriter;
 
 import java.io.File;
 import java.util.HashSet;
@@ -34,20 +37,20 @@ public class CsvToXml implements DBToDB{
     }
 
     public void execute() {
-        CsvReader csvReader = new CsvReader(csvFile);
-        JsonWriter jsonWriter = new JsonWriter(xmlFile);
-        LinkedList<MadaReport> list = new LinkedList<>();
+        CsvReaderB csvReader = new CsvReaderB(csvFile);
+        XmlWriter xmlWriter = new XmlWriter(xmlFile);
+        LinkedList<LabTest> list = new LinkedList<>();
         int count = 0;
         int numFiles = 1;
-        HashSet<MadaReport> madaReports = (HashSet<MadaReport>) csvReader.readData();
-        for (MadaReport madaReport: madaReports) {
-            list.add(madaReport);
+        HashSet<LabTest> labTests = (HashSet<LabTest>) csvReader.readData();
+        for (LabTest labTest: labTests) {
+            list.add(labTest);
             count++;
-            if ((count == 50000) || count == madaReports.size()){
-                jsonWriter.writeData(list);
+            if ((count == 50000) || count == labTests.size()){
+                xmlWriter.writeData(list);
                 numFiles++;
-                File newFile = new File("C:\\Users\\Daniel\\HadogemHamatmidJson\\file%d.json", String.valueOf((numFiles)));
-                jsonWriter.setFile(newFile);
+                File newFile = new File("C:\\Users\\Daniel\\LABTESTS\\file%d.xml", String.valueOf((numFiles)));
+                xmlWriter.setFile(newFile);
                 list.clear();
             }
         }
