@@ -31,7 +31,7 @@ public class CsvReader implements Reader{
         HashSet<MadaReport> madaReports = new HashSet<>();
         try {
             BufferedReader br = Files.newBufferedReader(Path.of(this.file.getAbsolutePath()));
-            String line;
+            String line = br.readLine();
             while ((line = br.readLine()) != null){
                 String[] record = line.split(DELIMITER);
                 MadaReport madaReport = recordToMadaReport(record);

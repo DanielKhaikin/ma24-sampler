@@ -19,16 +19,25 @@ public class TransformB {
 
     public String getJoin(String IDNum, String IDType){
         PersonInsured personInsured = start(IDNum,IDType);
+        if (personInsured == null){
+            return null;
+        }
         return String.valueOf(personInsured.getJoinDate());
     }
 
     public String getHealthID(String IDNum, String IDType){
         PersonInsured personInsured = start(IDNum,IDType);
+        if (personInsured == null){
+            return null;
+        }
         return String.valueOf(personInsured.getHealthCareId());
     }
 
     public String getHealthName(String IDNum, String IDType){
         PersonInsured personInsured = start(IDNum,IDType);
+        if (personInsured == null){
+            return null;
+        }
         return personInsured.getHealthCareName();
     }
 }

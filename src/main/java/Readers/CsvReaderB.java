@@ -35,10 +35,13 @@ public class CsvReaderB implements Reader{
         HashSet<LabTest> labTests = new HashSet<>();
         try {
             BufferedReader br = Files.newBufferedReader(Path.of(this.file.getAbsolutePath()));
-            String line;
+            String line = br.readLine();
+            int count = 1;
             while ((line = br.readLine()) != null){
                 String[] record = line.split(DELIMITER);
                 LabTest labTest = recordToLabTests(record);
+                System.out.println("read " + count);
+                count++;
                 labTests.add(labTest);
             }
         } catch (IOException e) {
