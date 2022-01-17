@@ -1,7 +1,7 @@
 package Readers;
 
 import Parsers.LabTest;
-import Parsers.MadaReport;
+import Transforms.TransformB;
 
 import java.io.BufferedReader;
 import java.io.File;
@@ -59,7 +59,10 @@ public class CsvReaderB implements Reader{
         String resultTestCorona = record[8];
         String variant = record[9];
         String testType = record[10];
-        String joinDate =
+        TransformB transformB = new TransformB();
+        String joinDate = transformB.getJoin(IDNum,IDType);
+        String healthCareID = transformB.getHealthID(IDNum,IDType);
+        String healthCareName = transformB.getHealthName(IDNum,IDType);
         return new LabTest(IDNum, IDType, firstName, lastName, resultDate, birthDate, labCode, stickerNumber, resultTestCorona, variant, testType, joinDate, healthCareID, healthCareName);
     }
 }
