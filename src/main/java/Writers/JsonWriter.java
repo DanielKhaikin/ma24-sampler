@@ -1,5 +1,6 @@
 package Writers;
 
+import Parsers.MadaReport;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import java.io.File;
@@ -21,12 +22,11 @@ public class JsonWriter implements Writer{
         this.file = file;
     }
 
-
     @Override
-    public void writeData(Object o) {
+    public void writeData(LinkedList t) {
         ObjectMapper objectMapper = new ObjectMapper();
         try {
-            objectMapper.writeValue(file, o);
+            objectMapper.writeValue(file, t);
         } catch (IOException e) {
             e.printStackTrace();
         }
