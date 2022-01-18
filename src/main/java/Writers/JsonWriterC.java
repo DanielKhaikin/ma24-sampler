@@ -23,6 +23,7 @@ public class JsonWriterC implements Writer{
         ObjectMapper objectMapper = new ObjectMapper();
         try {
             objectMapper.writeValue(file, t);
+            System.out.println("write");
         } catch (IOException e) {
             e.printStackTrace();
         }

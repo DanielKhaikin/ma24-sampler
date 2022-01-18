@@ -7,7 +7,7 @@ import Parsers.MadaReport;
 import java.util.HashSet;
 
 public class CrossDataFromCsv {
-    private HashSet<CrossedData> crossData(HashSet<LabTest> labTests, HashSet<MadaReport> madaReports){
+    public HashSet<CrossedData> crossData(HashSet<LabTest> labTests, HashSet<MadaReport> madaReports){
         HashSet<CrossedData> crossedData = new HashSet<>();
         for (LabTest labTest : labTests){
             for (MadaReport madaReport : madaReports){
