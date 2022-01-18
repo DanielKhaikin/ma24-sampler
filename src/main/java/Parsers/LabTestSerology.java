@@ -3,7 +3,7 @@ package Parsers;
 import java.time.LocalDate;
 
 public class LabTestSerology {
-    private String IDNum;
+    private String IDnum;
     private int IDType;
     private String firstName;
     private String lastName;
@@ -14,8 +14,8 @@ public class LabTestSerology {
     private int antidotes;
     private int kitNumber;
 
-    public LabTestSerology(String IDNum, int IDType, String firstName, String lastName, LocalDate resultDate, LocalDate birthDate, String labCode, String stickerNumber, int antidotes, int kitNumber) {
-        this.IDNum = IDNum;
+    public LabTestSerology(String IDnum, int IDType, String firstName, String lastName, LocalDate resultDate, LocalDate birthDate, String labCode, String stickerNumber, int antidotes, int kitNumber) {
+        this.IDnum = IDnum;
         this.IDType = IDType;
         this.firstName = firstName;
         this.lastName = lastName;

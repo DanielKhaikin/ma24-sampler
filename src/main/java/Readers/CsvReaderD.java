@@ -1,6 +1,7 @@
 package Readers;
 
 import Parsers.LabTest;
+import Parsers.LabTestSerology;
 import Transforms.TransformB;
 
 import java.io.BufferedReader;
@@ -29,22 +30,22 @@ public class CsvReaderD implements Reader{
     }
     @Override
     public Set readData() {
-        HashSet<LabTest> labTests = new HashSet<>();
+        HashSet<LabTestSerology> labTestsSerology = new HashSet<>();
         try {
             BufferedReader br = Files.newBufferedReader(Path.of(this.file.getAbsolutePath()));
             String line = br.readLine();
             int count = 1;
             while ((line = br.readLine()) != null){
                 String[] record = line.split(DELIMITER);
-                LabTest labTest = recordToLabTests(record);
+                LabTestSerology labTestSerology = recordToLabTests(record);
                 System.out.println("read " + count);
                 count++;
-                labTests.add(labTest);
+                labTestsSerology.add(labTestSerology);
             }
         } catch (IOException e) {
             e.printStackTrace();
         }
-        return labTests;
+        return labTestsSerology;
     }
 
     public LabTest recordToLabTests(String[] record){
