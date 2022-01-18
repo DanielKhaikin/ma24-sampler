@@ -1,18 +1,20 @@
 package Parsers;
 
+import java.time.LocalDate;
+
 public class LabTestSerology {
     private String IDNum;
-    private String IDType;
+    private int IDType;
     private String firstName;
     private String lastName;
-    private String resultDate;
-    private String birthDate;
+    private LocalDate resultDate;
+    private LocalDate birthDate;
     private String labCode;
     private String stickerNumber;
-    private String antidotes;
-    private String kitNumber;
+    private int antidotes;
+    private int kitNumber;
 
-    public LabTestSerology(String IDNum, String IDType, String firstName, String lastName, String resultDate, String birthDate, String labCode, String stickerNumber, String antidotes, String kitNumber) {
+    public LabTestSerology(String IDNum, int IDType, String firstName, String lastName, LocalDate resultDate, LocalDate birthDate, String labCode, String stickerNumber, int antidotes, int kitNumber) {
         this.IDNum = IDNum;
         this.IDType = IDType;
         this.firstName = firstName;
