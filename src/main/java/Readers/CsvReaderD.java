@@ -1,14 +1,14 @@
 package Readers;
 
-import Parsers.LabTest;
 import Parsers.LabTestSerology;
-import Transforms.TransformB;
+
 
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
+import java.time.LocalDate;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -40,7 +40,9 @@ public class CsvReaderD implements Reader{
                 LabTestSerology labTestSerology = recordToLabTests(record);
                 System.out.println("read " + count);
                 count++;
-                labTestsSerology.add(labTestSerology);
+                if (labTestSerology == null){
+                    labTestsSerology.add(labTestSerology);
+                }
             }
         } catch (IOException e) {
             e.printStackTrace();
@@ -48,22 +50,49 @@ public class CsvReaderD implements Reader{
         return labTestsSerology;
     }
 
-    public LabTest recordToLabTests(String[] record){
+    public LabTestSerology recordToLabTests(String[] record){
+        for (String str: record){
+            if (str == null){
+                return null;
+            }
+        }
         String IDNum = record[0];
-        String IDType = record[1];
+        int IDType = Integer.parseInt(record[1]);
         String  firstName= record[2];
         String lastName = record[3];
-        String resultDate = record[4];
-        String birthDate = record[5];
+        LocalDate resultDate = LocalDate.parse(record[4]);
+        LocalDate birthDate = LocalDate.parse(record[5]);
         String labCode = record[6];
         String stickerNumber = record[7];
-        String resultTestCorona = record[8];
-        String variant = record[9];
-        String testType = record[10];
-        TransformB transformB = new TransformB();
-        String joinDate = transformB.getJoin(IDNum,IDType);
-        String healthCareID = transformB.getHealthID(IDNum,IDType);
-        String healthCareName = transformB.getHealthName(IDNum,IDType);
-        return new LabTest(IDNum, IDType, firstName, lastName, resultDate, birthDate, labCode, stickerNumber, resultTestCorona, variant, testType, joinDate, healthCareID, healthCareName);
+        int antidotes = Integer.parseInt(record[8]);
+        int kitNumber = Integer.parseInt(record[9]);
+        if (((IDType == 0) && (IDNum.length() != 9))){
+            return null;
+        }
+        if (!checkLabCode(labCode)){
+            return null;
+        }
+        return new LabTestSerology(IDNum, IDType, firstName, lastName, resultDate, birthDate, labCode, stickerNumber, antidotes, kitNumber);
+    }
+
+    public boolean checkLabCode(String labCode){
+        System.out.println(labCode.substring(0,2));
+        System.out.println(labCode.substring(2,4));
+        if (labCode.length() != 5){
+            return false;
+        }
+        if (!(labCode.substring(0,2).matches("[0-9]+"))){
+            return false;
+        }
+        if (labCode.substring(2,3).matches("[0-9]+")){
+            return false;
+        }
+        if (labCode.substring(3,4).matches("[0-9]+")){
+            return false;
+        }
+        if (!(labCode.substring(4).matches("[0-9]+"))){
+            return false;
+        }
+        return true;
     }
 }
