@@ -8,7 +8,7 @@ import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
-import java.time.LocalDate;
+import java.sql.Date;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -60,8 +60,8 @@ public class CsvReaderD implements Reader{
         int IDType = Integer.parseInt(record[1]);
         String  firstName= record[2];
         String lastName = record[3];
-        LocalDate resultDate = LocalDate.parse(record[4]);
-        LocalDate birthDate = LocalDate.parse(record[5]);
+        Date resultDate = Date.parse(record[4]);
+        Date birthDate = Date.parse(record[5]);
         String labCode = record[6];
         String stickerNumber = record[7];
         int antidotes = Integer.parseInt(record[8]);
